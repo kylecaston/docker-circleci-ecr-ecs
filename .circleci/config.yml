@@ -31,7 +31,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
 
-              CLUSTER='test-app'
+              CLUSTER='sandbox'
               FAMILY='test-app'
               DOCKER_IMAGE='test-app'
               TASK='test-app'
