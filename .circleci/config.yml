@@ -33,7 +33,7 @@ jobs:
 
               CLUSTER='sandbox'
               FAMILY='test-app'
-              DOCKER_IMAGE='test-app'
+              DOCKER_IMAGE='kyle-ecr-repository'
               TASK='test-app'
               SERVICE='app-service'
 
