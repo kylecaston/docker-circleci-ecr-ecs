@@ -48,19 +48,52 @@ jobs:
               # Create task for docker deploy
               task_template='[
                 {
-                  "name": "%s",
-                  "image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
-                  "essential": true,
-                  "memoryReservation": 1000,
-                  "portMappings": [
+                  "networkMode": "bridge",
+                  "taskRoleArn": null,
+                  "containerDefinitions": [
                     {
-                      "containerPort": 3000,
-                      "hostPort": 80
+                      "volumesFrom": [],
+                      "memory": null,
+                      "extraHosts": null,
+                      "dnsServers": null,
+                      "disableNetworking": null,
+                      "dnsSearchDomains": null,
+                      "portMappings": [
+                        {
+                          "hostPort": 80,
+                          "containerPort": 3000,
+                          "protocol": "tcp"
+                        }
+                      ],
+                      "hostname": null,
+                      "essential": true,
+                      "entryPoint": null,
+                      "mountPoints": [],
+                      "name": "%s",
+                      "ulimits": null,
+                      "dockerSecurityOptions": null,
+                      "environment": [
+                        {
+                          "name": "NODE_ENV",
+                          "value": "production"
+                        }
+                      ],
+                      "links": null,
+                      "workingDirectory": null,
+                      "readonlyRootFilesystem": null,
+                      "image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
+                      "command": null,
+                      "user": null,
+                      "dockerLabels": null,
+                      "logConfiguration": null,
+                      "cpu": 0,
+                      "privileged": null,
+                      "memoryReservation": 1000
                     }
                   ],
-                  "environment" : [
-                      { "name" : "NODE_ENV", "value" : "production" }
-                  ]
+                  "placementConstraints": [],
+                  "volumes": [],
+                  "family": "test-app"
                 }
               ]'
               echo "$task_template"
